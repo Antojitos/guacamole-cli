@@ -33,3 +33,13 @@ positional arguments:
       -e ENDPOINT, --endpoint ENDPOINT
                               Guacamole endpoint URL
 ```
+
+## Tests
+
+In order to execute the test suite you need to run the next commands:
+```
+pip install -r requirements-dev.txt
+```
+```
+python tests/main.py
+```
