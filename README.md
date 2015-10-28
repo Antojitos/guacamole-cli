@@ -4,6 +4,8 @@ A command line interface for https://github.com/amessinger/guacamole
 
 Tested with Python 2.7 and 3.4
 
+[![Build Status](https://travis-ci.org/pabluk/guacamole-cli.svg)](https://travis-ci.org/pabluk/guacamole-cli)
+
 ## Install
 
 ```
