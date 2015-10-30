@@ -1,6 +1,6 @@
 # Guacamole command line interface
 
-A command line interface for https://github.com/amessinger/guacamole
+A command line interface for https://github.com/Antojitos/guacamole
 
 Tested with Python 2.7 and 3.4
 
