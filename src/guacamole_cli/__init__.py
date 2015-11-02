@@ -1,19 +1,67 @@
 import argparse
+import os.path
+
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 
 from guacamole_cli.client import GuacamoleClient
 
 
+CONFIG_FILE = os.path.join(os.path.expanduser('~'), '.guacamole.conf')
+
+
+def get_settings(config_file):
+    """Search and load a configuration file."""
+    default_settings = {
+        'general': {'endpoint': ''}
+    }
+
+    settings = configparser.ConfigParser()
+    try:
+        settings.read_dict(default_settings)
+    except AttributeError:
+        # using python 2.7
+        for section, options in default_settings.items():
+            settings.add_section(section)
+            for option, value in options.items():
+                settings.set(section, option, value)
+
+    if config_file is not None and os.path.exists(config_file):
+        settings.read(config_file)
+        return settings
+    if os.path.exists(CONFIG_FILE):
+        settings.read(CONFIG_FILE)
+        return settings
+    return settings
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-e', '--endpoint', help='Guacamole endpoint URL',
-                        default='http://localhost/files/')
-    parser.add_argument('filename', help='file to upload')
+    parser.add_argument('-c', '--config-file',
+                        help='Specify a configuration file')
+    parser.add_argument('-e', '--endpoint',
+                        help='Guacamole endpoint URL')
+    parser.add_argument('filename',
+                        help='file to upload')
     args = parser.parse_args()
 
-    client = GuacamoleClient(args.endpoint)
+    settings = get_settings(args.config_file)
+
+    endpoint = args.endpoint or settings.get('general', 'endpoint')
+
+    if not endpoint:
+        error_msg = 'You must specify an endpoint URL using the --endpoint ' \
+                    'command option or via the a configuration file by ' \
+                    'default in {0}'.format(CONFIG_FILE)
+        return error_msg
+
+    client = GuacamoleClient(endpoint)
     url = client.send(args.filename)
     if url:
         print(url)
     else:
-        error_msg = 'Oops! It seems there\'s something wrong with {0}'
-        print(error_msg.format(args.endpoint))
+        error_msg = 'Oops! It seems there\'s something wrong ' \
+                    'with the endpoint {0}'.format(endpoint)
+        return error_msg

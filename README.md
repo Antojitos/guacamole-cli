@@ -25,15 +25,28 @@ http://guacamole-server/files/TRPm/0lkq/6egk/yHgg/OeDg/fVHr/screenshot.jpg
 Use `--help` to show the command options:
 ```
 $ guacamole --help
-usage: guacamole [-h] [-e ENDPOINT] filename
+usage: guacamole [-h] [-c CONFIG_FILE] [-e ENDPOINT] filename
 
 positional arguments:
   filename              file to upload
 
-  optional arguments:
-    -h, --help            show this help message and exit
-      -e ENDPOINT, --endpoint ENDPOINT
-                              Guacamole endpoint URL
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CONFIG_FILE, --config-file CONFIG_FILE
+                        Specify a configuration file
+  -e ENDPOINT, --endpoint ENDPOINT
+                        Guacamole endpoint URL
+```
+
+## Configuration file
+By default the command line interface looks for a configuration file in
+`~/.guacamole.conf`. You can also specify an alternative configuration
+file using the `--config-file` command line option.
+
+Here's an example:
+```
+[general]
+endpoint = http://guacamole.antojitos.io/files/
 ```
 
 ## Tests
