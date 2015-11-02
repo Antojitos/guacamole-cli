@@ -37,7 +37,7 @@ def get_settings(config_file):
     return settings
 
 
-def main():
+def main(args=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config-file',
                         help='Specify a configuration file')
@@ -45,7 +45,7 @@ def main():
                         help='Guacamole endpoint URL')
     parser.add_argument('filename',
                         help='file to upload')
-    args = parser.parse_args()
+    args = parser.parse_args(args)
 
     settings = get_settings(args.config_file)
 
