@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="guacamole-cli",
-    version="0.1",
+    version="0.2.0",
     author="Pablo SEMINARIO",
     author_email="pablo@seminar.io",
     description="Guacamole command line interface",

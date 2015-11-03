@@ -9,7 +9,7 @@ Tested with Python 2.7 and 3.4
 ## Install
 
 ```
-$ pip install https://github.com/pabluk/guacamole-cli/archive/0.1.zip
+$ pip install https://github.com/pabluk/guacamole-cli/archive/0.2.zip
 ```
 
 ## Usage
