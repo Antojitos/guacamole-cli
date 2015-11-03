@@ -17,7 +17,7 @@ $ pip install https://github.com/pabluk/guacamole-cli/archive/0.1.zip
 ### Uploading a file
 To upload a file you need to specify your Guacamole server URL and a filename, for example:
 ```
-$ guacamole --endpoint http://guacamole.antojitos.io/files/ screenshot.jpg
+$ guacamole screenshot.jpg
 http://guacamole.antojitos.io/files/TRPm/0lkq/6egk/yHgg/OeDg/fVHr/screenshot.jpg
 ```
 
