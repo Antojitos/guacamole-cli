@@ -4,7 +4,7 @@ A command line interface for https://github.com/Antojitos/guacamole
 
 Tested with Python 2.7 and 3.4
 
-[![Build Status](https://travis-ci.org/pabluk/guacamole-cli.svg)](https://travis-ci.org/pabluk/guacamole-cli)
+[![Build Status](https://travis-ci.org/Antojitos/guacamole-cli.svg)](https://travis-ci.org/Antojitos/guacamole-cli)
 
 ## Install
 
@@ -17,8 +17,8 @@ $ pip install https://github.com/pabluk/guacamole-cli/archive/0.1.zip
 ### Uploading a file
 To upload a file you need to specify your Guacamole server URL and a filename, for example:
 ```
-$ guacamole --endpoint http://guacamole-server/files/ screenshot.jpg
-http://guacamole-server/files/TRPm/0lkq/6egk/yHgg/OeDg/fVHr/screenshot.jpg
+$ guacamole --endpoint http://guacamole.antojitos.io/files/ screenshot.jpg
+http://guacamole.antojitos.io/files/TRPm/0lkq/6egk/yHgg/OeDg/fVHr/screenshot.jpg
 ```
 
 ### Command options
