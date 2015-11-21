@@ -7,6 +7,7 @@ except ImportError:
     import ConfigParser as configparser
 
 from guacamole_cli.client import GuacamoleClient
+from guacamole_cli.client import TamalesClient
 
 
 CONFIG_FILE = os.path.join(os.path.expanduser('~'), '.guacamole.conf')
@@ -15,7 +16,7 @@ CONFIG_FILE = os.path.join(os.path.expanduser('~'), '.guacamole.conf')
 def get_settings(config_file):
     """Search and load a configuration file."""
     default_settings = {
-        'general': {'endpoint': ''}
+        'general': {'endpoint': '', 'shortener': ''}
     }
 
     settings = configparser.ConfigParser()
@@ -43,6 +44,8 @@ def main(args=None):
                         help='Specify a configuration file')
     parser.add_argument('-e', '--endpoint',
                         help='Guacamole endpoint URL')
+    parser.add_argument('-s', '--shortener',
+                        help='Tamales endpoint URL')
     parser.add_argument('filename',
                         help='file to upload')
     args = parser.parse_args(args)
@@ -50,6 +53,7 @@ def main(args=None):
     settings = get_settings(args.config_file)
 
     endpoint = args.endpoint or settings.get('general', 'endpoint')
+    shortener = args.shortener or settings.get('general', 'shortener')
 
     if not endpoint:
         error_msg = 'You must specify an endpoint URL using the --endpoint ' \
@@ -59,9 +63,18 @@ def main(args=None):
 
     client = GuacamoleClient(endpoint)
     url = client.send(args.filename)
-    if url:
-        print(url)
-    else:
+    if not url:
         error_msg = 'Oops! It seems there\'s something wrong ' \
                     'with the endpoint {0}'.format(endpoint)
         return error_msg
+
+    if shortener:
+        client = TamalesClient(shortener)
+        url = client.shorten(url)
+        if not url:
+            error_msg = 'Oops! It seems there\'s something wrong ' \
+                        'with the URL shortener service {0}'.format(shortener)
+            return error_msg
+        print(url)
+    else:
+        print(url)
