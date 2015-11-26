@@ -33,17 +33,20 @@ Command options
 Use ``--help`` to show the command options::
 
     $ guacamole --help
-    usage: guacamole [-h] [-c CONFIG_FILE] [-e ENDPOINT] filename
- 
+    usage: guacamole [-h] [-c CONFIG_FILE] [-e ENDPOINT] [-s SHORTENER] filename
+
     positional arguments:
       filename              file to upload
- 
+
     optional arguments:
       -h, --help            show this help message and exit
       -c CONFIG_FILE, --config-file CONFIG_FILE
                             Specify a configuration file
       -e ENDPOINT, --endpoint ENDPOINT
                             Guacamole endpoint URL
+      -s SHORTENER, --shortener SHORTENER
+                            Tamales endpoint URL
+
 
 Configuration file
 ------------------
@@ -56,6 +59,9 @@ Here's an example::
 
     [general]
     endpoint = http://guacamole.antojitos.io/files/
+
+    # an empty value disable the URL shortener service
+    shortener = http://t.antojitos.io/api/v1/urls
 
 Tests
 -----
