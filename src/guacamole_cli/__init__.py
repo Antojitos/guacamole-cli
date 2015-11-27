@@ -16,7 +16,10 @@ CONFIG_FILE = os.path.join(os.path.expanduser('~'), '.guacamole.conf')
 def get_settings(config_file):
     """Search and load a configuration file."""
     default_settings = {
-        'general': {'endpoint': '', 'shortener': ''}
+        'general': {
+            'endpoint': 'http://guacamole.antojitos.io/files/',
+            'shortener': 'http://t.antojitos.io/api/v1/urls',
+        }
     }
 
     settings = configparser.ConfigParser()
