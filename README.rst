@@ -14,7 +14,7 @@ Install
 
 ::
 
-    $ pip install guacamole-cli
+    pip install guacamole-cli
 
 Usage
 -----
@@ -25,7 +25,7 @@ Uploading a file
 To upload a file you need to specify your Guacamole server URL and a filename, for example::
 
     $ guacamole screenshot.jpg
-    http://guacamole.antojitos.io/files/TRPm/0lkq/6egk/yHgg/OeDg/fVHr/screenshot.jpg
+    http://t.antojitos.io/6egk
 
 Command options
 ***************
