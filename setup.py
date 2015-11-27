@@ -7,14 +7,14 @@ with open('README.rst') as file:
 
 setup(
     name="guacamole-cli",
-    version="0.3.0",
+    version="0.3.1",
     author="Pablo SEMINARIO",
     author_email="pablo@seminar.io",
     description="Guacamole command line interface",
     long_description=long_description,
     license="GNU General Public License v3 (GPLv3)",
     url="https://github.com/Antojitos/guacamole-cli",
-    download_url="https://github.com/Antojitos/guacamole-cli/archive/0.3.0.tar.gz",
+    download_url="https://github.com/Antojitos/guacamole-cli/archive/0.3.1.tar.gz",
     keywords=["cli", "guacamole"],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
