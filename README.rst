@@ -71,3 +71,13 @@ In order to execute the test suite you need to run the next commands::
     pip install -r requirements-dev.txt
     python tests/main.py
 
+
+Tweaks
+------
+
+- Upload and copy the returned url in the pasteboard
+`~/.bashrc`, `~/.zshrc`, ...
+```bash
+guacamole_copy() { guacamole $1 | xclip -selection clip }
+alias up=guacamole_copy
+```
